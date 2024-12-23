@@ -22,7 +22,7 @@ def main():
 
     # Step 2: Await instructions
     while True:
-        user_instruction = input("Hi! I'm CCB - your Changi Cocktail Bartender, and I'm here to create your drink of "
+        user_instruction = input("Hi! I'm CCB - your Changi Chatbot Bartender, and I'm here to create your drink of "
                                  "choice. Just tell me what flavor profiles you want, and I'll prepare a wonderful "
                                  "drink for you! Enter your instruction (or type 'exit' to quit): ")
         if user_instruction.lower() == "exit":

@@ -6,15 +6,15 @@ iii. Call the actual RBP dispensing instruction (eg. stop —> dispense —> del
 from openAI_methods import generate_volumes
 
 
-def processSpeechRequest():
+def process_speech_request():
     pass
 
 
-def convertToArray():
+def convert_to_array():
     pass
 
 
-def dispenseRBP():
+def dispense_RBP():
     pass
 
 

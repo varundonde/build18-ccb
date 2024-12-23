@@ -3,15 +3,15 @@ import openai
 # Set up OpenAI API key
 openai.api_key = "insert_api_key"
 
-
 # Generates volumes of each drink via NLP
 def generate_volumes(prompt):
+
     response = openai.Completion.create(
         engine="insert_chatgpt_engine",
         prompt=prompt,
         max_tokens=100
     )
-    print(response)  # To see what all is generated
+    print(response) # To see what all is generated
     return response.choices[0].text.strip()
 
 
@@ -49,6 +49,8 @@ def main():
         #         print("Invalid response from ChatGPT. Please try again.")
         # except ValueError:
         #     print("Could not parse ChatGPT's response. Please try again.")
+
+        
 
 
 main()

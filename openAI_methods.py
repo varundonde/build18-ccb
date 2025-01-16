@@ -6,21 +6,50 @@ processing (NLP) using the OpenAI API.
 
 """
 
-import openai
+from openai import OpenAI
 
-# Set up OpenAI API key
-openai.api_key = "insert_api_key"
+def generate_matrix(prompt):
 
-
-# @brief Generates volumes of each drink via NLP
-# Example Response: [20, 20, 20, 20, 20, 20]
-
-# Generates volumes of each drink via NLP
-def generate_volumes(prompt):
-    response = openai.Completion.create(
-        engine="insert_chatgpt_engine",
-        prompt=prompt,
-        max_tokens=100
+    client = OpenAI(
+    api_key="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"
     )
-    print(response)  # To see what all is generated
-    return response.choices[0].text.strip() # TODO: does this actually return a list
+
+    completion = client.chat.completions.create(
+    model="gpt-4o-mini",
+    store=True,
+    messages=[
+        {"role": "user", "content": prompt}
+    ]
+    )
+
+    print(completion.choices[0].message.content.strip())
+    return(completion.choices[0].message.content.strip())
+
+
+def main():
+    # Step 1: Input available drinks
+    drinks = ["Whiskey", "Tequila", "Aperol", "Coke", "Orange Juice", "Lime Juice"]
+    print("Available drinks:", ", ".join(drinks))
+
+    # Step 2: Await instructions
+    while True:
+        user_instruction = input("Enter your instruction (or type 'exit' to quit): ")
+        if user_instruction.lower() == "exit":
+            print("Goodbye!")
+            break
+
+        # Step 3: Pass instruction to ChatGPT
+        prompt = (
+            f"Available drinks: {', '.join(drinks)}. "
+            f"Instruction: {user_instruction}. "
+            "Generate a python list of 6 integers representing percentages of each drink containing to be dispensed to satisfy the instruction."
+            "Give me just the list and nothing else."
+            "The list should satisfy the following conditions:"
+            "1) Each number is between 0 and 100 inclusive."
+            "2) The sum of the numbers is 100."
+        )
+        # prompt = "make a matrix of 6 numbers"
+        print("prompt: ", prompt)
+        generate_matrix(prompt)
+
+main()

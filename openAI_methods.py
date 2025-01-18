@@ -11,7 +11,7 @@ from openai import OpenAI
 def generate_matrix(prompt):
 
     client = OpenAI(
-    api_key="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"
+    api_key= --
     )
 
     completion = client.chat.completions.create(

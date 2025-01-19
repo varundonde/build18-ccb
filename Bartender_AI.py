@@ -14,11 +14,11 @@ from openai import OpenAI
 class Bartender_AI: 
 
     def __init__(self): 
-        self.engine = self.initalize_tts()
+        self.engine = self.initialize_tts()
         self.key = "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"
         
     # Initialize text-to-speech engine
-    def initialize_tts():
+    def initialize_tts(self):
         engine = pyttsx3.init()
         engine.setProperty("rate", 150)  # Set speaking rate
         engine.setProperty("volume", 1.0)  # Set volume
@@ -85,4 +85,3 @@ class Bartender_AI:
         else:
             return False
 
-main()

@@ -68,7 +68,7 @@ def main():
             print("Goodbye!")
             break
 
-        print(user_instruction)
+        print(user_instruction, type(user_instruction[0]))
 
         # Step 2: Pass instruction to ChatGPT
         # Calls the function from openAI_methods.py

@@ -7,7 +7,7 @@ const int drink5 = 7;
 const int drink6 = 8; 
 
 const int BAUD_RATE = 9600;
-
+const int OFFSET = 3;
 
 // Placeholder Function for converting ratios to dispensing times
 int value_to_delay_time(int value) {
@@ -16,24 +16,15 @@ int value_to_delay_time(int value) {
 }
 
 // Dispensing Function 
-void dispense(int[] ratio) {
+void dispense(int ratios[]) {
     for (int pump = 3; pump <= 8; pump++) {
         digitalWrite(pump, HIGH); 
-        delay(value_to_delay_time(ratios[pump - 3]));
+        delay(value_to_delay_time(ratios[pump - OFFSET]));
         digitalWrite(pump, LOW);
-        delay(value_to_delay_time(ratios[pump - 3]));
+        delay(value_to_delay_time(ratios[pump - OFFSET]));
     }
 }
     
-
-
-
-    // for (int i = 0; i < value_to_dispensing_time(ratios[pin]); i++) {
-    //     digitalWrite(pin, HIGH); 
-    //     delayMicroseconds(DELAY_BEFORE_NEXT_DRINK);
-    //     digitalWrite(pin, LOW);
-    //     delayMicroseconds(DELAY_BEFORE_NEXT_DRINK);
-    // }
 
 void setup() {
     // Set up the pins

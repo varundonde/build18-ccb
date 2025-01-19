@@ -15,7 +15,7 @@ class Bartender_AI:
 
     def __init__(self): 
         self.engine = self.initialize_tts()
-        self.key = "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"
+        self.key = "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"
         
     # Initialize text-to-speech engine
     def initialize_tts(self):

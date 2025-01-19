@@ -68,9 +68,12 @@ def main():
             print("Goodbye!")
             break
 
+        print(user_instruction)
+
         # Step 2: Pass instruction to ChatGPT
         # Calls the function from openAI_methods.py
         volumes_generated = BARTENDER.generate_volume(user_instruction)
+        print(volumes_generated)
         # volumes_generated should be a list of ratios
         if volumes_generated: 
             BARTENDER.speak(BARTENDER.engine, "Your request is a success!")

@@ -11,23 +11,26 @@ using a separate module called openAI_methods.py (abstracted)
 
 
 #--------------------IMPORTS--------------------
-from openAI_methods import *
+from Bartender_AI import *
+import speech_recognition as sr
+
 
 import time
 import serial
 
 #--------------------CONSTANTS--------------------
+
 DRINKS = ["Coke", "Pepsi", "Sprite", "Fanta", "Water", "Lemonade"]
+BARTENDER = Bartender_AI()
+RECOGNIZER = sr.Recognizer()
+MICROPHONE  = sr.Microphone()
+TTS_INTRO = """Hi! I'm CCB - your Changi Chatbot Bartender, 
+and I'm here to create your drink of choice. 
+Just tell me what flavor profiles you want, 
+and I'll prepare a wonderful drink for you! 
+Enter your instruction (or type 'exit' to quit): """
 
 #--------------------HELPERS--------------------
-
-# are these really required?
-def process_speech_request():
-    pass
-
-
-def convert_to_array():
-    pass
 
 
 def handle_gpt_response(volumes_generated):
@@ -44,7 +47,6 @@ def handle_gpt_response(volumes_generated):
 #--------------------MAIN--------------------
 def main():
     # Display available drinks
-    # TODO: try to make this speech generation
     print("Available drinks:", ", ".join(DRINKS))
 
     # Initilize the serial port
@@ -58,10 +60,9 @@ def main():
 
     # Step 2: Await instructions
     while True:
-        # TODO: try to make this speech generation
-        user_instruction = input("Hi! I'm CCB - your Changi Chatbot Bartender, and I'm here to create your drink of "
-                                 "choice. Just tell me what flavor profiles you want, and I'll prepare a wonderful "
-                                 "drink for you! Enter your instruction (or type 'exit' to quit): ")
+        # Let Bartender introduce
+        BARTENDER.speak(BARTENDER, TTS_INTRO)
+        user_instruction = BARTENDER.get_speech_input(RECOGNIZER, MICROPHONE)
 
         if user_instruction.lower() == "exit":
             print("Goodbye!")
@@ -69,14 +70,15 @@ def main():
 
         # Step 2: Pass instruction to ChatGPT
         # Calls the function from openAI_methods.py
-        volumes_generated = generate_volume(user_instruction)
+        volumes_generated = BARTENDER.generate_volume(user_instruction)
         # volumes_generated should be a list of ratios
+        if volumes_generated: 
+            speak(BARTENDER, "Your request is a success!")
 
-
-        print("ChatGPT's response:", volumes_generated)
+        # For debugging
+        # print("ChatGPT's response:", volumes_generated)
         
         # Step 3: Sends the list of dispensing volumes to the Arduino
-
         volumes_str = ",".join(map(str,volumes_generated)) + "\n"
         ser.write(volumes_str.encode('utf-8'))
 
@@ -90,7 +92,8 @@ def main():
                     print("Arduino failed to acknowledge the instruction")
                 break
 
-        user_response = input("Drink is prepared, Hope you enjoyed! Would you like to order another drink? (yes/no): ")
+        BARTENDER.speak(BARTENDER, "Do you want to make another drink? (yes/no)")
+        BARTENDER.get_speech_input(RECOGNIZER, MICROPHONE)
         if user_response.lower() == "no":
             break
 

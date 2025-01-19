@@ -6,13 +6,14 @@ const int drink4 = 6;
 const int drink5 = 7; 
 const int drink6 = 8; 
 
+const int OFFSET = 3; 
 const int BAUD_RATE = 9600;
-const int OFFSET = 3;
+
 
 // Placeholder Function for converting ratios to dispensing times
 int value_to_delay_time(int value) {
     // Placeholder value
-    return value * 500; 
+    return value * 5000; 
 }
 
 // Dispensing Function 
@@ -58,13 +59,6 @@ void loop() {
         index++;
     }
     
-    // Debug print to verify parsing
-    Serial.print("Parsed ratios: ");
-    for (int i = 0; i < index; i++) {
-        Serial.print(ratios[i]);
-        Serial.print(" ");
-    }
-    Serial.println();
     
     // Call dispense with the parsed ratios
     dispense(ratios);
@@ -72,6 +66,13 @@ void loop() {
 }
 
     
+
+
+
+
+
+
+
 
 
 

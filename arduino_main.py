@@ -51,7 +51,7 @@ def main():
 
     # Initilize the serial port
     # Replace 'COM3' with your Arduino's port
-    arduino_port = "COM3"
+    arduino_port = "/dev/cu.usbmodem744DBDA1AD702"
     baud_rate = 9600  # Match Arduino's baud rate
 
     # Initialize serial connection
@@ -89,6 +89,7 @@ def main():
         while True:
             if ser.in_waiting > 0:
                 response = ser.readline().decode('utf-8').strip()
+                print(response)
                 if response == "ack":
                     print("Arduino acknowledged the instruction")
                 else: 

@@ -13,7 +13,7 @@ const int BAUD_RATE = 9600;
 // Placeholder Function for converting ratios to dispensing times
 int value_to_delay_time(int value) {
     // Placeholder value
-    return value * 5000; 
+    return value * 500; 
 }
 
 // Dispensing Function 
@@ -42,6 +42,7 @@ void setup() {
 }
 
 void loop() {
+    Serial.println("reached loop");
     while (!Serial.available());
     
     String inputString = Serial.readStringUntil('\n');
@@ -66,13 +67,5 @@ void loop() {
 }
 
     
-
-
-
-
-
-
-
-
 
 

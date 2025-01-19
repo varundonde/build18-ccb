@@ -35,7 +35,7 @@ class Bartender_AI:
             print("Listening for your instructions...")
             with microphone as source:
                 recognizer.adjust_for_ambient_noise(source)
-                audio = recognizer.listen(source)
+                audio = recognizer.listen(source, timeout = 10)
             print("Processing your input...")
             return recognizer.recognize_google(audio)
         except sr.UnknownValueError:

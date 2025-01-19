@@ -67,7 +67,7 @@ def main():
             "2) The sum of the numbers is 100."
         )
 
-        volumes_generated = generate_volumes(prompt) # --> does this return an list for sure? 
+        volumes_generated = generate_volume(prompt) # --> does this return an list for sure? 
         print("ChatGPT's response:", volumes_generated)
         # TODO: call parser if type mismatch --> handle_gpt_response
         # handle_gpt_response(volumes_generated)

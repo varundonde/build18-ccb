@@ -69,7 +69,7 @@ def main():
 
         # Step 2: Pass instruction to ChatGPT
         # Calls the function from openAI_methods.py
-        volumes_generated = generate_volumes(user_instruction)
+        volumes_generated = generate_volume(user_instruction)
         # volumes_generated should be a list of ratios
 
 

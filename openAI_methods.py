@@ -26,7 +26,7 @@ def generate_matrix(prompt):
     return(completion.choices[0].message.content.strip())
 
 
-def main():
+def generate_volume():
     # Step 1: Input available drinks
     drinks = ["Whiskey", "Tequila", "Aperol", "Coke", "Orange Juice", "Lime Juice"]
     print("Available drinks:", ", ".join(drinks))

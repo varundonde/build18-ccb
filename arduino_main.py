@@ -51,17 +51,17 @@ def main():
 
     # Initilize the serial port
     # Replace 'COM3' with your Arduino's port
-    arduino_port = "COM3"
-    baud_rate = 9600  # Match Arduino's baud rate
+    # arduino_port = "COM3"
+    # baud_rate = 9600  # Match Arduino's baud rate
 
     # Initialize serial connection
-    ser = serial.Serial(arduino_port, baud_rate, timeout=1)
-    time.sleep(2)  # Wait for the connection to initialize
+    # ser = serial.Serial(arduino_port, baud_rate, timeout=1)
+    # time.sleep(2)  # Wait for the connection to initialize
 
     # Step 2: Await instructions
     while True:
         # Let Bartender introduce
-        BARTENDER.speak(BARTENDER, TTS_INTRO)
+        BARTENDER.speak(BARTENDER.engine, TTS_INTRO)
         user_instruction = BARTENDER.get_speech_input(RECOGNIZER, MICROPHONE)
 
         if user_instruction.lower() == "exit":
@@ -73,7 +73,7 @@ def main():
         volumes_generated = BARTENDER.generate_volume(user_instruction)
         # volumes_generated should be a list of ratios
         if volumes_generated: 
-            speak(BARTENDER, "Your request is a success!")
+            speak(BARTENDER.engine, "Your request is a success!")
 
         # For debugging
         # print("ChatGPT's response:", volumes_generated)
@@ -92,7 +92,7 @@ def main():
                     print("Arduino failed to acknowledge the instruction")
                 break
 
-        BARTENDER.speak(BARTENDER, "Do you want to make another drink? (yes/no)")
+        BARTENDER.speak(BARTENDER.engine, "Do you want to make another drink? (yes/no)")
         BARTENDER.get_speech_input(RECOGNIZER, MICROPHONE)
         if user_response.lower() == "no":
             break

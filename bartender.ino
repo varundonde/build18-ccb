@@ -22,7 +22,7 @@ void dispense(int ratios[]) {
         digitalWrite(pump, HIGH); 
         delay(value_to_delay_time(ratios[pump - OFFSET]));
         digitalWrite(pump, LOW);
-        delay(value_to_delay_time(ratios[pump - OFFSET]));
+        delay(1000); 
     }
 }
     

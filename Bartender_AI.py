@@ -60,9 +60,8 @@ class Bartender_AI:
         return (completion.choices[0].message.content.strip())
 
 
-    def generate_volume(self, user_instruction):
+    def generate_volume(self, user_instruction, drinks):
         # Available drinks
-        drinks = ["Coke", "Pepsi", "Sprite", "Fanta", "Water", "Lemonade"]
         print("Available drinks:", ", ".join(drinks))
 
         # Create the prompt for OpenAI API

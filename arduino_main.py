@@ -20,7 +20,7 @@ import serial
 
 #--------------------CONSTANTS--------------------
 
-DRINKS = ["Coke", "Pepsi", "Sprite", "Fanta", "Water", "Lemonade"]
+DRINKS = ["Lemonade", "Ginger Ale", "Pepsi", "Apple Juice", "Sparkling Water", "Orange Juice"]
 BARTENDER = Bartender_AI()
 RECOGNIZER = sr.Recognizer()
 MICROPHONE  = sr.Microphone()
@@ -72,7 +72,7 @@ def main():
 
         # Step 2: Pass instruction to ChatGPT
         # Calls the function from openAI_methods.py
-        volumes_generated = BARTENDER.generate_volume(user_instruction)
+        volumes_generated = BARTENDER.generate_volume(user_instruction, DRINKS)
         print(volumes_generated)
         # volumes_generated should be a list of ratios
         if volumes_generated: 

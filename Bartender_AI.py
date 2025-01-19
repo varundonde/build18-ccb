@@ -80,8 +80,16 @@ class Bartender_AI:
 
         # Generate the response from OpenAI API
         response = self.generate_list(prompt)
-        if response != "Error":
-            return True
-        else:
-            return False
-
+        try:
+            # Attempt to convert the response to a list of integers
+            volumes = [int(vol.strip()) for vol in response.strip('[]').split(',')]
+            
+            # Validate the volumes
+            if len(volumes) == 6 and sum(volumes) == 100 and all(0 <= x <= 100 for x in volumes):
+                return volumes
+            else:
+                print("Invalid volume response from ChatGPT")
+                return None
+        except (ValueError, TypeError):
+            print("Could not parse ChatGPT's response")
+            return None

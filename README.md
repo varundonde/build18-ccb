@@ -5,6 +5,7 @@ official repo for build18-changi-chatbot-bartender project
 serial (Arduino)
 time (delays)
 
+pyaudio
 pyttsx3 (speech recognition)
 OpenAI
 speech_recognition

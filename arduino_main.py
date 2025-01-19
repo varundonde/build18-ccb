@@ -51,12 +51,12 @@ def main():
 
     # Initilize the serial port
     # Replace 'COM3' with your Arduino's port
-    # arduino_port = "COM3"
-    # baud_rate = 9600  # Match Arduino's baud rate
+    arduino_port = "COM3"
+    baud_rate = 9600  # Match Arduino's baud rate
 
     # Initialize serial connection
-    # ser = serial.Serial(arduino_port, baud_rate, timeout=1)
-    # time.sleep(2)  # Wait for the connection to initialize
+    ser = serial.Serial(arduino_port, baud_rate, timeout=1)
+    time.sleep(2)  # Wait for the connection to initialize
 
     # Step 2: Await instructions
     while True:

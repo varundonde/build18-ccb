@@ -73,7 +73,7 @@ def main():
         volumes_generated = BARTENDER.generate_volume(user_instruction)
         # volumes_generated should be a list of ratios
         if volumes_generated: 
-            speak(BARTENDER.engine, "Your request is a success!")
+            BARTENDER.speak(BARTENDER.engine, "Your request is a success!")
 
         # For debugging
         # print("ChatGPT's response:", volumes_generated)

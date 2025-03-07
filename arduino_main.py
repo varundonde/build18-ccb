@@ -77,9 +77,6 @@ def main():
         # volumes_generated should be a list of ratios
         if volumes_generated: 
             BARTENDER.speak(BARTENDER.engine, "Your request is a success!")
-
-        # For debugging
-        # print("ChatGPT's response:", volumes_generated)
         
         # Step 3: Sends the list of dispensing volumes to the Arduino
         volumes_str = ",".join(map(str,volumes_generated)) + "\n"

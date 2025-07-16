@@ -1,0 +1,11 @@
+# Ignore data files
+*.tsv
+
+# Ignore model files
+*.pt
+
+# Ignore PDF files
+*.pdf
+
+# Ignore old repo or nested clones
+eBayHackathon/
